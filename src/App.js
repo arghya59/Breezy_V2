@@ -10,6 +10,7 @@ import './app.css';
 
 //Components
 import Navbar from './universal-components/Navbar';
+import Footer from "./universal-components/Footer";
 
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="" element={<About />} />
                 </Routes>
+                <Footer/>
             </Context>
         </section>
     )

@@ -26,3 +26,14 @@
     font-weight: lighter;
     color: var(--on-background);
 }
+
+/* [--------- Footer section ---------] */
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    padding: 20px;
+    color: var(--on-surface-variant);
+    letter-spacing: 1px;
+}

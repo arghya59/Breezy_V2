@@ -1,29 +1,23 @@
 import React from 'react'
-//import sunny from "../../../Assets/weather_icons/01d.png"
+import sunny from "../../../assets/weather_icons/01d.png"
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { useContext } from 'react';
-//import { WeatherDataContext } from "../../../App"
-//import getDateAndTime from '../../../module';
+
+import getDateAndTime from '../../../modules/modules';
 import dayjs from 'dayjs';
 import { SlCalender } from "react-icons/sl";
 
-export default function SevenDayForecast() {
-
-   // const weather_Data = useContext(WeatherDataContext)
-    //const forecastSevenDays = weather_Data.weatherData.daily
-    //console.log(forecastSevenDays)
-
+export default function SevenDayForecast({sevendayData, timezone}) {
 
     return (
         <>
             <div className='daily-container'>
                 <h3 className='card-heading'><SlCalender className='m'/> 8-Day forecast</h3>
                 <hr id='line' />
-                {/* {
-                    forecastSevenDays.map((value, index) => {
+                {
+                    sevendayData.map((value, index) => {
 
-                        const day = dayjs(getDateAndTime(value.dt, weather_Data.weatherData.timezone_offset)).format("dddd")
-                        const date = dayjs(getDateAndTime(value.dt, weather_Data.weatherData.timezone_offset)).format("DD MMM")
+                        const day = dayjs(getDateAndTime(value.dt, timezone)).format("dddd")
+                        const date = dayjs(getDateAndTime(value.dt, timezone)).format("DD MMM")
                         const maxTemp = Math.round(value.temp.max)
                         const minTemp = Math.round(value.temp.min)
                         const status = value.weather[0].main
@@ -46,14 +40,14 @@ export default function SevenDayForecast() {
                                     </li>
                                     <li className='daily-status'>
                                         <span>{status}</span>
-                                        <p><img className='daily-status-icon' src="" alt='status' /></p>
+                                        <p><img className='daily-status-icon' src={sunny} alt='status' /></p>
                                     </li>
                                 </ul>
                             </div>
                         )
 
                     })
-                } */}
+                }
             </div>
         </>
     )

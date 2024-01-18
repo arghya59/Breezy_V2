@@ -1,0 +1,235 @@
+/* Fonts  */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
+/*
+https://cdn.dribbble.com/users/1782407/screenshots/19104654/media/3b36deea0ee80ab78d1dd5eac638defe.gif
+https://cdn.dribbble.com/users/702789/screenshots/5083470/beach.gif
+*/
+
+
+:root {
+  --primary-color: #536dfe;
+  --background-color: #ffffff;
+
+
+  --secondary-color: #3f3d56;
+  --text-color: #e8e8e8;
+
+  
+  --background: #131214;
+  --on-background: #EAE6F2;
+
+  /* Text */
+  --surface: #1D1C1F;
+  --on-surface: #DDDAE5;
+  --on-surface-variant: #7B7980;
+  --on-surface-variant-2: #B9B6BF;
+
+  /* Card */
+  --card : rgba(255, 255, 255, 0.055);
+  --outline: #3E3D40;
+
+  
+  --bg-aqi-1: #89E589;
+  --on-bg-aqi-1: #1F331F;
+  --bg-aqi-2: #E5DD89;
+  --on-bg-aqi-2: #33311F;
+  --bg-aqi-3: #E5C089;
+  --on-bg-aqi-3: #332B1F;
+  --bg-aqi-4: #E58989;
+  --on-bg-aqi-4: #331F1F;
+  --bg-aqi-5: #E589B7;
+  --on-bg-aqi-5: #331F29;
+  --white: hsl(0, 0%, 100%);
+  --white-alpha-4: hsla(0, 0%, 100%, 0.04);
+  --white-alpha-8: hsla(0, 0%, 100%, 0.08);
+  --black-alpha-10: hsla(0, 0%, 0%, 0.1);
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+#root {
+  height: 100vh;
+  overflow-y: scroll;
+  background: linear-gradient(to bottom,
+      rgba(0 0 0 /0.1),
+      rgba(0 0 0 /0.3)), url(./assets/bgs/haze.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all linear ease;
+}
+
+#overlay{
+  background: linear-gradient(to bottom,
+  rgba(0 0 0 /0.0),
+  rgba(0 0 0 /0.05),
+  rgba(0 0 0 /0.1),
+  rgba(0 0 0 /0.3),
+  rgba(0 0 0 /0.5));
+  height: 10% !important;
+  width: 100%;
+  bottom: 0;
+  z-index: 3335;
+  position: absolute;
+
+}
+
+/* Loader Part */
+.loadrer-sec {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(15px);
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 80px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(farthest-side, #ffa516 94%, #0000) top/8px 8px no-repeat,
+    conic-gradient(#0000 30%, #ffa516);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+  animation: l13 1s infinite linear;
+}
+
+@keyframes l13 {
+  100% {
+    transform: rotate(1turn)
+  }
+}
+
+/****Scroll bar****/
+
+::-webkit-scrollbar{
+  background: transparent;
+  width: 10px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb{
+  background: linear-gradient(#72708d79, #5a7d7984);
+  border-radius: 20px;
+}
+
+/* Pop Out For Location */
+.pop-up-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: absolute;
+  width: 100%;
+  z-index: 11;
+  backdrop-filter: blur(15px);
+  transition: all linear ease;
+}
+
+.popupbox {
+  height: 60vh;
+  width: 30vw;
+  background: linear-gradient(#ff5a3d, #5a7d79);
+  border-radius: 20px;
+  display: flex;
+  gap: 25px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: popup 0.5s linear;
+  transition: all linear ease;
+  color: var(--on-background);
+}
+
+@keyframes popup {
+  0% {
+    transform: translateY(-20rem);
+  }
+
+  50% {
+    transform: translateY(-10rem);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.location-icon-of-popup {
+  font-size: 10rem;
+  color: #536dfe !important;
+}
+
+.pop-up-msg {
+  font-size: 2rem;
+}
+
+.not-now {
+  width: 35%;
+  height: 10%;
+  background-color: rgba(255, 77, 89, 0.904);
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
+  color: var(--on-background);
+}
+
+nav>div>a {
+  font-size: 1.8rem;
+  color: var(--on-background);
+}
+
+nav>div {
+  width: 100%;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+  font-size: 1.2rem;
+}
+
+.navitems {
+  flex: 1;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.navitems>span {
+  font-size: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+}

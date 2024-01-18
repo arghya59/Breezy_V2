@@ -14,14 +14,15 @@ import Navbar from './universal-components/Navbar';
 
 export default function App() {
     return (
-        <Context>
-            <section className='App'>
+
+        <section className='App'>
+            <Context>
                 <Navbar />
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="" element={<About />} />
                 </Routes>
-            </section>
-        </Context>
+            </Context>
+        </section>
     )
 }

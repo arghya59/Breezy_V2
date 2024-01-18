@@ -1,18 +1,16 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import "./style.css"
-import { FaSearchLocation } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";
+import { WeatherContext } from '../context/Context'
 
 export default function Search() {
-
-    // function clear() {
-    //     searchTag.current.value = ""
-    // }
+    console.log("Search has loaded")
+    const weather = useContext(WeatherContext)
+    
+    //Clear the search value
+    function clear(e) {
+       e.target.value = ""
+    }
     return (
-        <div id='search'>
-            <FaSearchLocation className='search-icons' />
-                <input id='Search' placeholder="Search" maxLength={20} type='search' />
-            <FaLocationDot className='search-icons' />
-        </div>
+        <input id='Search' onClick={clear} onKeyDown={weather.getCity} placeholder="Search" maxLength={20} type='search' />
     )
 }

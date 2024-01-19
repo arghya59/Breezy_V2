@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaWind } from "react-icons/fa";
-import { TbArrowMoveRight } from "react-icons/tb";
+import { TbArrowRightTail } from "react-icons/tb";
 
 export default function Wind({ deg, gust, speed }) {
     return (
@@ -32,9 +32,11 @@ export default function Wind({ deg, gust, speed }) {
 
                         }
                     </div>
+                    <hr id='wind_section_divider'  className='vertical_line'></hr>
                     <div className='wind_meter_sec'>
                         <div className='wind_deg'>
-                            <TbArrowMoveRight className='wind_arrow' style={{ "--i": `${deg}deg` }} />
+                            <TbArrowRightTail className='wind_arrow' style={{ "--i": `${deg}deg` }} />
+                            <p className='direction'>NWN</p>
                         </div>
                     </div>
 

@@ -81,11 +81,15 @@
     align-items: center;
     height: 5vh;
     padding: 20px;
-    color: var(--on-surface-variant);
+    color: var(--on-surface-variant-2);
     letter-spacing: 1px;
+    position: relative;
+    z-index: 100;
 }
 
-
+.footer div a{
+    color: #eb6e4b;
+}
 
 /* Page Not Found */
 

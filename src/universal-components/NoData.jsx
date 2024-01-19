@@ -7,7 +7,7 @@ export default function NoData() {
             <div id='Msg_for_no_data'>
             <div ><img src={logo} alt="Data illustrations by Storyset"/></div>             
                 <h3>Sorry!</h3>
-                <p>No data to show</p>
+                <p>No data to show please search</p>
             </div>
         </div>
     )

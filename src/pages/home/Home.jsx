@@ -15,6 +15,7 @@ import MainTemp from './components/MainTemp';
 import SevenDayForecast from './components/SevenDayForecast';
 import SmallCard from './components/SmallCard';
 import Visibility from './components/Visibility';
+import Pressure from './components/Pressure';
 //import Footer from './components/Footer';
 import HourlyData from './components/HourlyData';
 import Precipitation from './components/Precipitation';
@@ -24,11 +25,14 @@ import Sys from './components/Sys';
 import AirIndex from './components/AirIndex';
 
 //Icons...
-import { GiSpeedometer } from "react-icons/gi";
 import { IoMdAlert } from "react-icons/io";
 import { FaCity } from "react-icons/fa";
 import { TbUvIndex } from "react-icons/tb";
 import NoData from '../../universal-components/NoData';
+import { GiSunset } from "react-icons/gi";
+import { FiSunrise } from "react-icons/fi";
+import { MdNightlightRound } from "react-icons/md";
+import { BsFillSunFill } from "react-icons/bs";
 
 //Elements...
 export default function Home() {
@@ -54,23 +58,54 @@ export default function Home() {
       dew_point: weather.data.weather.current.dew_point,
       visibility: weather.data.weather.current.visibility,
       current_date: getDateAndTime(weather.data.weather.current.dt, weather.data.weather.timezone_offset),
-      sunrise: weather.data.weather.current.sunrise,
-      sunset: weather.data.weather.current.sunset,
+      sunrise: getDateAndTime(weather.data.weather.current.sunrise, weather.data.weather.timezone_offset),
+      sunset: getDateAndTime(weather.data.weather.current.sunset, weather.data.weather.timezone_offset),
       status: weather.data.weather.current.weather[0].main,
       rain: weather.data.weather.daily[0].rain,
       pop: weather.data.weather.daily[0].pop,
       timezone_offset: weather.data.weather.timezone_offset,
-      uvi: weather.data.weather.current.uvi,
+      uvi: Math.round(weather.data.weather.current.uvi),
       wind: { speed: weather.data.weather.daily[0].wind_speed, gust: weather.data.weather.daily[0].wind_gust, deg: weather.data.weather.daily[0].wind_deg },
       //Daily
       daily: weather.data.weather.daily,
       //Hourly
       hourly: weather.data.weather.hourly,
       //All Day...
-      all_day: [ [ "Morning", Math.round(weather.data.weather.daily[0].temp.morn)], [ "Evening", Math.round(weather.data.weather.daily[0].temp.eve)] , ["Day", Math.round(weather.data.weather.daily[0].temp.day)] , [ "Night",  Math.round(weather.data.weather.daily[0].temp.night)]]
+      all_day: weather.data.weather.daily[0].temp
+    }
+
+    var uvIndex, uvColor, uvAlert
+    switch (true) {
+      case (data.uvi >= 0 && data.uvi <= 2):
+        uvIndex = "Low"
+        uvColor = { color: "#7bc124" }
+        uvAlert = "You can safely stay outside"
+        break;
+
+      case (data.uvi >= 3 && data.uvi <= 5):
+        uvIndex = "Moderate"
+        uvColor = { color: "#ffbf04" }
+        uvAlert = "Seek shade during midday hour!"
+        break;
+
+      case (data.uvi >= 6 && data.uvi <= 7):
+        uvIndex = "High"
+        uvColor = { color: "#ff7300" }
+        uvAlert = "Seek shade during midday hour!"
+        break;
+
+      case (data.uvi >= 8 && data.uvi <= 10):
+        uvIndex = "Extreme"
+        uvColor = { color: "#e5231f" }
+        uvAlert = "Avoid being outside during midday hours!"
+        break;
+
+      default:
+        break;
     }
 
   }
+
   console.log("Processed Data : ", data)
 
   return (
@@ -130,19 +165,14 @@ export default function Home() {
                 lon={data.lon}
               />
               <Map />
-              <Sys />
+              <Sys
 
-              <div id='pressure_container' className='other_section_card'>
-                <div className='-card-'>
-                  <div className='card_title'>
-                    <GiSpeedometer className='m icon_property' /> Pressure
-                  </div>
-                  <div className='pressure_data small_card_result'>
-                    <p>{data.pressure}<span className='unit'>mb</span> </p>
-                    <p>Seems Normal</p>
-                  </div>
-                </div>
-              </div>
+                sunrise={dayjs(data.sunrise).format("h:mm A")}
+                sunset={dayjs(data.sunset).format("h:mm A")}
+
+              />
+
+              <Pressure pressure={data.pressure} />
 
               <div id='snow_container' className='other_section_card small_cards'>
                 <div className='-card-'>
@@ -169,9 +199,10 @@ export default function Home() {
                   <div className='card_title'>
                     <TbUvIndex className='m icon_property' /> UV Index
                   </div>
-                  <div className='pressure_data small_card_result'>
+                  <div className='uvi_card'>
                     <p>{data.uvi}</p>
-                    <p>Low</p>
+                    <p className='uv_status' style={uvColor}>{uvIndex}</p>
+                    <p className='uv_alert'>{uvAlert}</p>
                   </div>
                 </div>
               </div>
@@ -180,23 +211,34 @@ export default function Home() {
               <div id='morning_evening_temp_container' className='other_section_card'>
                 <div className='-card-'>
                   <div className='card_title'>
-                    <IoMdAlert className='m icon_property' /> Today's Forecast for City-name
+                    <IoMdAlert className='m icon_property' /> Today's Forecast for {data.cityName}
                   </div>
 
                   <div className='wide_card_result'>
 
-                    {data.all_day.map((item, index) => {
-                      return (
-                        <div className='day_time_section'>
-                          <div>{item[0]}</div>
-                          <div>{item[1]}&deg;</div>
-                          <img src='' alt='icon' className='m-e-icons' />
-                        </div>
-                      )
-                    })}
+                    <div className='all_day_temp'>
+                      <div>Morning</div>
+                      <div>{Math.round(data.all_day.morn)}&deg;</div>
+                      <FiSunrise className='m-e-icons'/>
+                    </div>
 
+                    <div className='all_day_temp'>
+                      <div>Evening</div>
+                      <div>{Math.round(data.all_day.eve)}&deg;</div>
+                      <GiSunset className='m-e-icons'/>
+                    </div>
 
+                    <div className='all_day_temp'>
+                      <div>Day</div>
+                      <div>{Math.round(data.all_day.day)}&deg;</div>
+                      <BsFillSunFill className='m-e-icons'/>
+                    </div>
 
+                    <div className='all_day_temp'>
+                      <div>Night</div>
+                      <div>{Math.round(data.all_day.night)}&deg;</div>
+                      <MdNightlightRound className='m-e-icons'/>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -232,7 +274,7 @@ export default function Home() {
         </section>
 
 
-        : <NoData/>}
+        : <NoData />}
     </>
   )
 

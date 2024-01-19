@@ -4,6 +4,11 @@ import { IoMdMoon } from "react-icons/io";
 import { BsFillSunriseFill } from "react-icons/bs";
 
 export default function Sys({ sunrise, sunset }) {
+
+    let sunriseTime = sunrise.split(" ")
+    let sunsetTime =  sunset.split(" ")
+
+    console.log(sunriseTime)
     return (
         <div id='sunrise_or_sunset_container' className='other_section_card'>
             <div className='-card-'>
@@ -17,7 +22,7 @@ export default function Sys({ sunrise, sunset }) {
 
                         <div className='sys_data'>
                             <p>Sunrise</p>
-                            <p>7:00</p>
+                            <p>{sunriseTime[0]} <span className='unit'>{sunriseTime[1]}</span> </p>
                         </div>
                     </div>
 
@@ -27,7 +32,7 @@ export default function Sys({ sunrise, sunset }) {
                         <IoMdMoon style={{color: "#b0bec5"}} className='sys-icons'/>
                         <div className='sys_data'>
                             <p>Sunset</p>
-                            <p>7:00</p>
+                            <p>{sunsetTime[0]} <span className='unit'>{sunsetTime[1]}</span></p>
                         </div>
                     </div>
                 </div>

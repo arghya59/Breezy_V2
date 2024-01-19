@@ -10,7 +10,7 @@ https://cdn.dribbble.com/users/702789/screenshots/5083470/beach.gif
 
 
 :root {
-  --primary-color: #536dfe;
+  --primary: #FFC604;
   --background-color: #ffffff;
 
 
@@ -24,28 +24,12 @@ https://cdn.dribbble.com/users/702789/screenshots/5083470/beach.gif
   /* Text */
   --surface: #1D1C1F;
   --on-surface: #DDDAE5;
-  --on-surface-variant: #7B7980;
+  --on-surface-variant: #ffc404c3;
   --on-surface-variant-2: #B9B6BF;
 
   /* Card */
   --card : rgba(255, 255, 255, 0.055);
   --outline: #3E3D40;
-
-  
-  --bg-aqi-1: #89E589;
-  --on-bg-aqi-1: #1F331F;
-  --bg-aqi-2: #E5DD89;
-  --on-bg-aqi-2: #33311F;
-  --bg-aqi-3: #E5C089;
-  --on-bg-aqi-3: #332B1F;
-  --bg-aqi-4: #E58989;
-  --on-bg-aqi-4: #331F1F;
-  --bg-aqi-5: #E589B7;
-  --on-bg-aqi-5: #331F29;
-  --white: hsl(0, 0%, 100%);
-  --white-alpha-4: hsla(0, 0%, 100%, 0.04);
-  --white-alpha-8: hsla(0, 0%, 100%, 0.08);
-  --black-alpha-10: hsla(0, 0%, 0%, 0.1);
 }
 
 
@@ -87,7 +71,7 @@ html {
   height: 10% !important;
   width: 100%;
   bottom: 0;
-  z-index: 3335;
+  z-index: 30;
   position: absolute;
 
 }
@@ -129,7 +113,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb{
-  background: linear-gradient(#72708d79, #5a7d7984);
+  background: linear-gradient(var(--primary), #ffffff00);
   border-radius: 20px;
 }
 

@@ -6,6 +6,9 @@
 .pnp.js
 .env
 
+# branding
+/src/assets/branding
+
 # testing
 /coverage
 

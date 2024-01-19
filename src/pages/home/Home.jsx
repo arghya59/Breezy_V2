@@ -26,16 +26,16 @@ import AirIndex from './components/AirIndex';
 //Icons...
 import { GiSpeedometer } from "react-icons/gi";
 import { IoMdAlert } from "react-icons/io";
-import { MdLightMode } from "react-icons/md";
 import { FaCity } from "react-icons/fa";
 import { TbUvIndex } from "react-icons/tb";
+import NoData from '../../universal-components/NoData';
 
 //Elements...
 export default function Home() {
   const weather = useContext(WeatherContext)
   console.log("Home Rerendered")
 
-  // //Data structuring...
+  //Data structuring...
   if (weather.data) {
     console.log("true")
     var data = {
@@ -74,8 +74,9 @@ export default function Home() {
   console.log("Processed Data : ", data)
 
   return (
+
     <>
-      {weather.data ?
+      {weather.data && weather.error == false ?
 
         <section id='Home'>
 
@@ -231,7 +232,7 @@ export default function Home() {
         </section>
 
 
-        : "No data"}
+        : <NoData/>}
     </>
   )
 

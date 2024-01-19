@@ -1,3 +1,50 @@
+#Msg_for_no_data{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 70vh;
+    width: 100%;
+    /* border: 1px solid var(--on-surface-variant); */
+    border-radius: 30px;
+    color: var(--on-surface-variant-2);
+}
+
+#Msg_for_no_data div {
+    width: 60%;
+    height: 60%;
+}
+#Msg_for_no_data div img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#Msg_for_no_data h3{
+   font-size: 3rem;
+}
+
+#Msg_for_no_data p{
+    font-size: 1.2rem;
+ }
+ 
+#error{
+    width: 60% !important;
+    height: 80% !important;
+}
+
+.Go_Back{
+    font-size: 1.2rem;
+    background: var(--on-surface-variant);
+    width: 5%;
+    height: 10%;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--on-surface-variant-2);
+}
+
 /* Search  */
 .search-icons {
     font-size: 1.4rem;
@@ -8,14 +55,14 @@
     justify-content: space-around;
     align-items: center;
     border: 1px solid #5a7d7957;
-    border-radius: 10px;
+    border-radius: 20px;
     width: 50%;
     backdrop-filter: blur(4px);
     background-color: rgba(255, 255, 255, 0.055);
 }
 
 #search>input {
-    width: 85%;
+    width: 75%;
     height: 6vh;
     border-radius: 10px;
     background: transparent;
@@ -37,3 +84,8 @@
     color: var(--on-surface-variant);
     letter-spacing: 1px;
 }
+
+
+
+/* Page Not Found */
+

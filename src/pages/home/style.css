@@ -705,3 +705,22 @@
     color: var(--on-surface-variant-2);
     letter-spacing: 1px;
  }
+
+ /* Error prompt */
+
+ .error_prompt{
+    display: flex;
+    justify-content: center;
+    height: 5vh;
+ }
+
+ .error_prompt span {
+    width: 40%;
+    height: 100%;
+    background: red;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+ }

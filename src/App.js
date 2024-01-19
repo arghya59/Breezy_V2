@@ -11,6 +11,7 @@ import './app.css';
 //Components
 import Navbar from './universal-components/Navbar';
 import Footer from "./universal-components/Footer";
+import PageNotFound from "./universal-components/PageNotFound";
 
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="" element={<About />} />
+                    <Route path="*" element={<PageNotFound/>}/>
                 </Routes>
                 <Footer/>
             </Context>

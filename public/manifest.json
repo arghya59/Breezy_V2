@@ -1,0 +1,7 @@
+{"icons": [
+    {
+      "src": "%PUBLIC_URL%/favicon.ico",
+      "sizes": "50x50",
+      "type": "image/ico"
+    }
+  ]}

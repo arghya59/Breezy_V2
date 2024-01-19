@@ -200,15 +200,20 @@ html {
 /* Navbar */
 nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   height: 15vh;
   color: var(--on-background);
 }
 
-nav>div>a {
-  font-size: 1.8rem;
-  color: var(--on-background);
+nav div a{
+  display: flex;
+  align-items: center;
+}
+
+.brand{
+  margin-left: 20px;
+  height: 40px;
 }
 
 nav>div {
@@ -223,7 +228,6 @@ nav>div {
 
 .navitems {
   flex: 1;
-  text-align: center;
   font-size: 2.5rem;
 }
 

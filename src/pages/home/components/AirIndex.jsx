@@ -1,6 +1,6 @@
-import { React, useContext } from 'react'
+import { React } from 'react'
 import { MdOutlineLensBlur } from "react-icons/md";
-import { Circle } from 'rc-progress';
+//import { Circle } from 'rc-progress';
 //Context
 //import { WeatherDataContext } from "../../../App"
 

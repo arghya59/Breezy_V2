@@ -8,14 +8,20 @@ const WeatherContext = createContext()
 const Context = (props) => {
     const [data, setData] = useState()
     const [error, setError] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
+
+    function stopLoading(){
+        setIsLoading(false)
+    }
+
     async function getCity(event){
         try {
             if(event.key === "Enter"){
                 console.log("Event happened")
+                setIsLoading(true)
                 const response = await getDataByCityName(event.target.value)
                 const dataResponse = await getWeather(response[0].lat, response[0].lon)
-                setError(false)
-                console.log(dataResponse)
+                //console.log(dataResponse)
                 setData({
                     city: {
                         name : response[0].name,
@@ -24,15 +30,16 @@ const Context = (props) => {
                     } ,
                     weather: dataResponse
                 })
+                setIsLoading(false)
             }
         } catch (error) {
+            setError(true)
             console.log("Failed to get data")
-           setError(true)
         }
     }
     
         return( 
-            <WeatherContext.Provider  value={{ data, getCity, error }}>
+            <WeatherContext.Provider  value={{ data, getCity, isLoading, stopLoading, error }}>
                 {/* Wrapping its children */}
                 {props.children}
             </WeatherContext.Provider>

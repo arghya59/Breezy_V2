@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { Fragment, useContext } from 'react'
 
 //Context
 import { WeatherContext } from '../../context/Context'
@@ -16,13 +16,13 @@ import SevenDayForecast from './components/SevenDayForecast';
 import SmallCard from './components/SmallCard';
 import Visibility from './components/Visibility';
 import Pressure from './components/Pressure';
-//import Footer from './components/Footer';
 import HourlyData from './components/HourlyData';
 import Precipitation from './components/Precipitation';
 import Wind from './components/Wind';
 import Map from './components/Map';
 import Sys from './components/Sys';
 import AirIndex from './components/AirIndex';
+import Loader from "../../universal-components/Loader"
 
 //Icons...
 import { IoMdAlert } from "react-icons/io";
@@ -41,7 +41,6 @@ export default function Home() {
 
   //Data structuring...
   if (weather.data) {
-    console.log("true")
     var data = {
       //Current
       cityName: weather.data.city.name,
@@ -109,173 +108,163 @@ export default function Home() {
   console.log("Processed Data : ", data)
 
   return (
+    <Fragment>
+      {weather.isLoading ? (
+        <Loader />
+      ) : (
+        <Fragment>
+          {weather.data && weather.error == false ?
+            <section id='Home'>
 
-    <>
-      {weather.data && weather.error == false ?
-
-        <section id='Home'>
-
-          {/*------------------
-              Main Section 
-          --------------------*/}
-
-          <div className='main-result'>
-            <MainTemp
-              city={data.cityName}
-              country={data.country}
-              timeAndDate={dayjs(data.current_date).format("dddd, DD MMM, h:mm A")}
-              temp={data.temperature}
-              maxTemp={data.max_temp}
-              minTemp={data.min_temp}
-              feelsLike={data.feels_like}
-              status={data.status}
-            />
-
-            <SevenDayForecast
-              sevendayData={data.daily}
-              timezone={data.timezone_offset}
-            />
-          </div>
-
-          {/*------------------
-              Sub Section 
-              --------------------*/}
-
-          <div className='side_section'>
-            <div id='other_section_container'>
-              <SmallCard
-                title="Humidity"
-                humidity={data.humidity}
-                dew_point={Math.round(data.dew_point)}
-              />
-              <Visibility
-                visibility={data.visibility}
-              />
-              <HourlyData
-                hourly={data.hourly}
-                timezone={data.timezone_offset}
-              />
-
-              <Precipitation
-                rain={data.rain}
-                pop={data.pop}
-              />
-              <AirIndex
-                lat={data.lat}
-                lon={data.lon}
-              />
-              <Map />
-              <Sys
-
-                sunrise={dayjs(data.sunrise).format("h:mm A")}
-                sunset={dayjs(data.sunset).format("h:mm A")}
-
-              />
-
-              <Pressure pressure={data.pressure} />
-
-              <div id='snow_container' className='other_section_card small_cards'>
-                <div className='-card-'>
-                  <div className='card_title'>
-                    <div className='m icon_property' />Snow
-                  </div>
-                  <div className='snow_data'>
-                    <p className='smallcard_data_text'>22 <span className='unit'>mm</span></p>
-                    <p>Due point is right now</p>
-                  </div>
-
-                </div>
+              <div className='main-result'>
+                <MainTemp
+                  city={data.cityName}
+                  country={data.country}
+                  timeAndDate={dayjs(data.current_date).format("dddd, DD MMM, h:mm A")}
+                  temp={data.temperature}
+                  maxTemp={data.max_temp}
+                  minTemp={data.min_temp}
+                  feelsLike={data.feels_like}
+                  status={data.status}
+                />
+                <SevenDayForecast
+                  sevendayData={data.daily}
+                  timezone={data.timezone_offset}
+                />
               </div>
 
-              <Wind
-                deg={data.wind.deg}
-                speed={data.wind.speed}
-                gust={data.wind.gust}
-              />
+              <div className='side_section'>
+                <div id='other_section_container'>
+                  <SmallCard
+                    title="Humidity"
+                    humidity={data.humidity}
+                    dew_point={Math.round(data.dew_point)}
+                  />
+                  <Visibility
+                    visibility={data.visibility}
+                  />
+                  <HourlyData
+                    hourly={data.hourly}
+                    timezone={data.timezone_offset}
+                  />
 
-              {/* UV Index */}
-              <div id='pressure_container' className='other_section_card'>
-                <div className='-card-'>
-                  <div className='card_title'>
-                    <TbUvIndex className='m icon_property' /> UV Index
-                  </div>
-                  <div className='uvi_card'>
-                    <p>{data.uvi}</p>
-                    <p className='uv_status' style={uvColor}>{uvIndex}</p>
-                    <p className='uv_alert'>{uvAlert}</p>
-                  </div>
-                </div>
-              </div>
+                  <Precipitation
+                    rain={data.rain}
+                    pop={data.pop}
+                  />
+                  <AirIndex
+                    lat={data.lat}
+                    lon={data.lon}
+                  />
 
-              {/* Morning to Evening */}
-              <div id='morning_evening_temp_container' className='other_section_card'>
-                <div className='-card-'>
-                  <div className='card_title'>
-                    <IoMdAlert className='m icon_property' /> Today's Forecast for {data.cityName}
-                  </div>
+                  <Map />
 
-                  <div className='wide_card_result'>
+                  <Sys
+                    sunrise={dayjs(data.sunrise).format("h:mm A")}
+                    sunset={dayjs(data.sunset).format("h:mm A")}
+                  />
 
-                    <div className='all_day_temp'>
-                      <div>Morning</div>
-                      <div>{Math.round(data.all_day.morn)}&deg;</div>
-                      <FiSunrise className='m-e-icons'/>
-                    </div>
+                  <Pressure pressure={data.pressure} />
 
-                    <div className='all_day_temp'>
-                      <div>Evening</div>
-                      <div>{Math.round(data.all_day.eve)}&deg;</div>
-                      <GiSunset className='m-e-icons'/>
-                    </div>
+                  <div id='snow_container' className='other_section_card small_cards'>
+                    <div className='-card-'>
+                      <div className='card_title'>
+                        <div className='m icon_property' />Snow
+                      </div>
+                      <div className='snow_data'>
+                        <p className='smallcard_data_text'>22 <span className='unit'>mm</span></p>
+                        <p>Due point is right now</p>
+                      </div>
 
-                    <div className='all_day_temp'>
-                      <div>Day</div>
-                      <div>{Math.round(data.all_day.day)}&deg;</div>
-                      <BsFillSunFill className='m-e-icons'/>
-                    </div>
-
-                    <div className='all_day_temp'>
-                      <div>Night</div>
-                      <div>{Math.round(data.all_day.night)}&deg;</div>
-                      <MdNightlightRound className='m-e-icons'/>
                     </div>
                   </div>
-                </div>
-              </div>
 
-              {/* City Details */}
-              <div id='City_details_container' className='other_section_card'>
-                <div className='-card-'>
-                  <div className='card_title'>
-                    <FaCity className='m icon_property' /> City details
+                  <Wind
+                    deg={data.wind.deg}
+                    speed={data.wind.speed}
+                    gust={data.wind.gust}
+                  />
+
+                  {/* UV Index */}
+                  <div id='pressure_container' className='other_section_card'>
+                    <div className='-card-'>
+                      <div className='card_title'>
+                        <TbUvIndex className='m icon_property' /> UV Index
+                      </div>
+                      <div className='uvi_card'>
+                        <p>{data.uvi}</p>
+                        <p className='uv_status' style={uvColor}>{uvIndex}</p>
+                        <p className='uv_alert'>{uvAlert}</p>
+                      </div>
+                    </div>
                   </div>
 
-                  <div className='small_card_result'>
-                    <div className='city_list'>
-                      <p><span>City:</span> <span>{data.cityName}</span></p>
-                      <p><span>State:</span> <span>{data.state}</span></p>
-                      <p><span>Country</span> <span>{data.country}</span> </p>
-                      <p><span>Latitude:</span> <span>{data.lat}</span> </p>
-                      <p>
-                        <span>Longitude</span>
-                        <span>{data.lon}</span>
-                      </p>
+                  {/* Morning to Evening */}
+                  <div id='morning_evening_temp_container' className='other_section_card'>
+                    <div className='-card-'>
+                      <div className='card_title'>
+                        <IoMdAlert className='m icon_property' /> Today's Forecast for {data.cityName}
+                      </div>
 
+                      <div className='wide_card_result'>
+
+                        <div className='all_day_temp'>
+                          <div>Morning</div>
+                          <div>{Math.round(data.all_day.morn)}&deg;</div>
+                          <FiSunrise className='m-e-icons' />
+                        </div>
+
+                        <div className='all_day_temp'>
+                          <div>Evening</div>
+                          <div>{Math.round(data.all_day.eve)}&deg;</div>
+                          <GiSunset className='m-e-icons' />
+                        </div>
+
+                        <div className='all_day_temp'>
+                          <div>Day</div>
+                          <div>{Math.round(data.all_day.day)}&deg;</div>
+                          <BsFillSunFill className='m-e-icons' />
+                        </div>
+
+                        <div className='all_day_temp'>
+                          <div>Night</div>
+                          <div>{Math.round(data.all_day.night)}&deg;</div>
+                          <MdNightlightRound className='m-e-icons' />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* City Details */}
+                  <div id='City_details_container' className='other_section_card'>
+                    <div className='-card-'>
+                      <div className='card_title'>
+                        <FaCity className='m icon_property' /> City details
+                      </div>
+
+                      <div className='small_card_result'>
+                        <div className='city_list'>
+                          <p><span>City:</span> <span>{data.cityName}</span></p>
+                          <p><span>State:</span> <span>{data.state}</span></p>
+                          <p><span>Country</span> <span>{data.country}</span> </p>
+                          <p><span>Latitude:</span> <span>{data.lat}</span> </p>
+                          <p>
+                            <span>Longitude</span>
+                            <span>{data.lon}</span>
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
+                <div className='last_dec'> Breezy gives you 96% of accurate real time weather data</div>
               </div>
-            </div>
+            </section>
 
-
-            <div className='last_dec'> Breezy gives you 96% of accurate real time weather data</div>
-          </div>
-
-        </section>
-
-
-        : <NoData />}
-    </>
+            : <NoData />}
+        </Fragment>
+      )}
+    </Fragment>
   )
 
 }

@@ -34,10 +34,12 @@ import { FiSunrise } from "react-icons/fi";
 import { MdNightlightRound } from "react-icons/md";
 import { BsFillSunFill } from "react-icons/bs";
 
+
 //Elements...
 export default function Home() {
   const weather = useContext(WeatherContext)
   console.log("Home Rerendered")
+  console.log(weather)
 
   //Data structuring...
   if (weather.data) {
@@ -49,6 +51,7 @@ export default function Home() {
       lat: weather.data.weather.lat,
       lon: weather.data.weather.lon,
       temperature: Math.round(weather.data.weather.current.temp),
+      weather_Icon: weather.data.weather.current.weather[0].icon,
       feels_like: Math.round(weather.data.weather.current.feels_like),
       max_temp: Math.round(weather.data.weather.daily[0].temp.max),
       min_temp: Math.round(weather.data.weather.daily[0].temp.min),
@@ -126,6 +129,7 @@ export default function Home() {
                   minTemp={data.min_temp}
                   feelsLike={data.feels_like}
                   status={data.status}
+                  weather_Icon={data.weather_Icon}
                 />
                 <SevenDayForecast
                   sevendayData={data.daily}
@@ -153,7 +157,7 @@ export default function Home() {
                     pop={data.pop}
                   />
                   <AirIndex
-                    lat={data.lat}
+                    lat= {data.lat}
                     lon={data.lon}
                   />
 
@@ -257,7 +261,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className='last_dec'> Breezy gives you 96% of accurate real time weather data</div>
+                <div className='last_dec'> Breezy gives you accurate and real time weather data</div>
               </div>
             </section>
 

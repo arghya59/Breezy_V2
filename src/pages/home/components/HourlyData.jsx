@@ -1,5 +1,4 @@
 import React from 'react'
-import icon from "../../../assets/weather_icons/02n.png"
 import getDateAndTime from '../../../modules/modules';
 import dayjs from 'dayjs';
 
@@ -20,7 +19,7 @@ export default function HourlyData({hourly, timezone}) {
                             <p>
                                 {(index===0 )? "Now" : dayjs(getDateAndTime(value.dt, timezone)).format("h A")}
                             </p>
-                            <img className='hourly_icon' src={icon} alt='' />
+                            <img className='hourly_icon' src={ require(`../../../assets/weather_icons/${value.weather[0].icon}.png`) } alt='' />
                             <p>
                                 {Math.round(value.temp)}&deg;
                             </p>

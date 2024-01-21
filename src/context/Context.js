@@ -30,14 +30,15 @@ const Context = (props) => {
                     } ,
                     weather: dataResponse
                 })
+                setError(false)
                 setIsLoading(false)
             }
         } catch (error) {
             setError(true)
+            setIsLoading(false)
             console.log("Failed to get data")
         }
     }
-    
         return( 
             <WeatherContext.Provider  value={{ data, getCity, isLoading, stopLoading, error }}>
                 {/* Wrapping its children */}

@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom'
 import { BsCalendarDate } from "react-icons/bs";
 import { GrLocation } from "react-icons/gr";
 import { MdOutlineKeyboardDoubleArrowUp, MdOutlineKeyboardDoubleArrowDown } from "react-icons/md";
-import cloud from "../../../assets/weather_icons/02d.png"
 
 
-export default function MainTemp({ city, country, timeAndDate, temp, status, maxTemp, minTemp, feelsLike }) {
+export default function MainTemp({ city, country, timeAndDate, temp, status, maxTemp, minTemp, feelsLike, weather_Icon }) {
     return (
         <>
 
@@ -24,7 +23,7 @@ export default function MainTemp({ city, country, timeAndDate, temp, status, max
                 <div id='main-result'>
                     <div id='temp'> {(temp || temp === 0) ? <>{temp}&deg;<sup>c</sup></> : "--"}</div>
                     <div className='icon'>
-                        <img src={cloud} alt='status' />
+                        <img className='temp_icon' src={ require(`../../../assets/weather_icons/${weather_Icon}.png`) } alt='status' />
                     </div>
                 </div>
                 <div id='status'>{(status) ? <>{status}</> : "--"}</div>

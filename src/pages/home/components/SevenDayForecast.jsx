@@ -22,7 +22,7 @@ export default function SevenDayForecast({ sevendayData, timezone }) {
                         const icon = value.weather[0].icon
 
                         return (
-                            <div className='daily-list-container' key={index}>
+                            <div className='daily-list-container' key={index + "Daily"}>
                                 <ul className='daily-list' >
                                     <li className='daily-date'>
                                         <p className='daily-date-day'>{index !== 0 ? day : "Today"}</p>

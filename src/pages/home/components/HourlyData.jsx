@@ -15,7 +15,7 @@ export default function HourlyData({hourly, timezone}) {
                 {hourlyData.map((value, index) => {
                     // eslint-disable-next-line
                         return (
-                        <div className='hour_card' key={index}>
+                        <div className='hour_card' key={index  + "Hourly Data"}>
                             <p>
                                 {(index===0 )? "Now" : dayjs(getDateAndTime(value.dt, timezone)).format("h A")}
                             </p>

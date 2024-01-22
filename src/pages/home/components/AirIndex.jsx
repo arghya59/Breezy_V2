@@ -100,7 +100,7 @@ export default function AirIndex({ lat, lon }) {
                             <div className='parameters'>
                                 {components.map((value, index) => {
                                     return (
-                                        <ul key={{ index }}>
+                                        <ul key={index + "Air"}>
                                             <li>{value[0]}:</li>
                                             <li>
                                                 {value[1]}

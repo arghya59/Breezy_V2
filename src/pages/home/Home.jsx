@@ -33,6 +33,7 @@ import { GiSunset } from "react-icons/gi";
 import { FiSunrise } from "react-icons/fi";
 import { MdNightlightRound } from "react-icons/md";
 import { BsFillSunFill } from "react-icons/bs";
+import Alert from './components/Alert';
 
 
 //Elements...
@@ -73,7 +74,8 @@ export default function Home() {
       //Hourly
       hourly: weather.data.weather.hourly,
       //All Day...
-      all_day: weather.data.weather.daily[0].temp
+      all_day: weather.data.weather.daily[0].temp,
+      alert:  weather.data.weather.alerts 
     }
 
     var uvIndex, uvColor, uvAlert
@@ -138,6 +140,12 @@ export default function Home() {
               </div>
 
               <div className='side_section'>
+
+               { data.alert ?  <Alert 
+                  alert = {data.alert}
+                  timezone={data.timezone_offset}
+                /> : null }
+
                 <div id='other_section_container'>
                   <SmallCard
                     title="Humidity"
@@ -157,11 +165,14 @@ export default function Home() {
                     pop={data.pop}
                   />
                   <AirIndex
-                    lat= {data.lat}
+                    lat={data.lat}
                     lon={data.lon}
                   />
 
-                  <Map />
+                  <Map
+                    lat={data.lat}
+                    lon={data.lon}
+                  />
 
                   <Sys
                     sunrise={dayjs(data.sunrise).format("h:mm A")}

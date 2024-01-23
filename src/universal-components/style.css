@@ -73,6 +73,10 @@
     color: var(--on-background);
 }
 
+.location{
+    cursor: pointer;
+}
+
 /* [--------- Footer section ---------] */
 .footer {
     display: flex;

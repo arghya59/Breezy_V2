@@ -33,6 +33,9 @@ export default function Wind({ deg, gust, speed }) {
             break;
         case deg === 360:
             direction = "N"
+            break;
+        default:
+            break
     }
 
     return (
@@ -46,7 +49,7 @@ export default function Wind({ deg, gust, speed }) {
 
                     <div className='wind_data'>
                         <div className='wind'>
-                            {speed ? Math.round(speed * 3.6) : "--"} <div className='wind_unit'><p >k/h</p> <p>Wind</p></div>
+                            {speed ? Math.round(speed) : "--"} <div className='wind_unit'><p >m/s</p> <p>Wind</p></div>
                         </div>
 
                         {
@@ -54,7 +57,7 @@ export default function Wind({ deg, gust, speed }) {
                                 <>
                                     <hr id='line' />
                                     <div className='wind'>
-                                        {gust ? Math.round(gust * 3.6) : "--"} <div className='wind_unit'><p>k/h</p> <p>Gusts</p></div>
+                                        {gust ? Math.round(gust) : "--"} <div className='wind_unit'><p>m/s</p> <p>Gusts</p></div>
                                     </div>
                                 </>
 

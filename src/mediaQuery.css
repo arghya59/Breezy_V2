@@ -1,0 +1,48 @@
+/* -- For Mobile View --  */
+@media screen and (max-width: 767px){
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  nav{
+    height: 15vh;
+  }
+  nav>div{
+    height: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 1rem;
+    position: relative;
+    gap: 10px;
+    padding: 5px;
+  }
+  .brand {
+    margin-left: 5px;
+    height: 30px;
+  }
+  .search-icons {
+    font-size: 1rem;
+}
+
+#search {
+  width: 100% !important;
+  align-self: center;
+  border-radius: 10px !important;
+}
+
+  #hamburger {
+    font-size: 1rem;
+    position: absolute;
+    right: 0;
+  }
+
+  .navitems>span {
+    font-size: 1.5rem;
+    padding: 5px;
+  }
+  
+}
+
+/* -- For Tablet View --  */
+@media screen and (min-width: 768px) and (max-width: 1023px){
+
+}

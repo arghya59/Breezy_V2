@@ -5,6 +5,7 @@ import Context from "./context/Context"
 import About from './pages/about/About'
 //Css
 import './app.css';
+import './mediaQuery.css'
 //Components
 import Navbar from './universal-components/Navbar';
 import Footer from "./universal-components/Footer";

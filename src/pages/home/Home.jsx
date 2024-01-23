@@ -106,6 +106,7 @@ export default function Home() {
 
       default:
         break;
+        // eslint-disable-next-line
     }
 
   }
@@ -114,8 +115,8 @@ export default function Home() {
 
   return (
     <Fragment>
-      {weather.isLoading ? (
-        <Loader />
+      {weather.loading.condition ? (
+        <Loader loaderText={weather.loading.data}/>
       ) : (
         <Fragment>
           {weather.data && weather.error == false ?

@@ -3,7 +3,7 @@ import { MdVisibility } from "react-icons/md";
 
 export default function Visibility({ visibility }) {
   return (
-    <div id='humid-and-dew-container' className='other_section_card small_cards'>
+    <div id='visibility_container' className='other_section_card small_cards'>
             <div className='-card-'>
                 <div className='card_title'>
                     <MdVisibility className='m icon_property' />Visibility

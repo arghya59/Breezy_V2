@@ -419,6 +419,11 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 190px);
+    grid-template-areas: "Humid visibility Hourly Hourly Hourly"
+                            "rain air air map map" 
+                            "sunrise sunrise pressure map map"
+                            "snowing wind wind map map"
+                            "uv today today city city";
     gap: 20px;
 }
 
@@ -433,33 +438,65 @@
 }
 
 /* Grid System */
+#humid_and_dew_container{
+    grid-area: Humid;
+}
+
+#visibility_container{
+    grid-area: visibility;
+}
+
 #hourly_forecast {
-    grid-column: 3/6;
+    /* grid-column: 3/6; */
+    grid-area: Hourly;
 }
 
 #windDetails_container {
-    grid-column: 2/4;
+    /* grid-column: 2/4; */
+    grid-area: wind;
 }
 
 #map_container {
-    grid-column: 4/6;
-    grid-row: 2/5;
+    /* grid-column: 4/6;
+    grid-row: 2/5; */
+    grid-area: map;
 }
 
 #sunrise_or_sunset_container {
-    grid-column: 1/ 3;
+    /* grid-column: 1/ 3; */
+    grid-area: sunrise;
+}
+
+#Precipitation_container{
+    grid-area: rain;
 }
 
 #air_index_container {
-    grid-column: 2/ 4;
+    /* grid-column: 2/ 4; */
+    grid-area: air;
 }
 
-#alert_container {
+#snow_container{
+    grid-area: snowing;
+}
+
+/* #alert_container {
     grid-column: 1/ 3;
+} */
+#pressure_container{
+    grid-area: pressure;
 }
 
+
+#uvi{
+    grid-area: uv;
+}
 #morning_evening_temp_container {
-    grid-column: 3/ 5;
+    /* grid-column: 3/ 5; */
+    grid-area: today;
+}
+#City_details_container{
+    grid-area: city;
 }
 
 /* Style for children */

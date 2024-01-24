@@ -1,12 +1,21 @@
 /* -- For Mobile View --  */
-@media screen and (max-width: 767px){
+@media screen and (max-width: 767px) {
   ::-webkit-scrollbar {
     display: none;
   }
-  nav{
-    height: 15vh;
+
+  #root {
+    /* background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+ background-blend-mode: multiply,multiply; */
   }
-  nav>div{
+
+
+
+  nav {
+    height: auto;
+  }
+
+  nav>div {
     height: 100%;
     flex-direction: column;
     align-items: flex-start;
@@ -15,34 +24,153 @@
     gap: 10px;
     padding: 5px;
   }
+
   .brand {
     margin-left: 5px;
     height: 30px;
+    display: none;
   }
+
   .search-icons {
     font-size: 1rem;
-}
+  }
 
-#search {
-  width: 100% !important;
-  align-self: center;
-  border-radius: 10px !important;
-}
+  #search {
+    width: 95% !important;
+    align-self: center;
+    border-radius: 10px !important;
+  }
 
   #hamburger {
     font-size: 1rem;
     position: absolute;
     right: 0;
+    display: none;
   }
 
   .navitems>span {
     font-size: 1.5rem;
     padding: 5px;
   }
-  
+
+  #Home {
+    flex-direction: column;
+  }
+
+  .main-result {
+    width: 100% !important;
+  }
+
+  .side_section {
+    width: 100% !important;
+  }
+
+  #other_section_container {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(11, 190px) !important;
+    grid-template-areas: "Humid visibility"
+      "Hourly Hourly"
+      "rain rain"
+      "air air"
+      "map map"
+      "map map"
+      "sunrise sunrise"
+      "pressure snowing"
+      "wind wind"
+      "today today"
+      "uv city" !important;
+  }
+
+  #overlay{
+    display: none;
+  }
+
+  .footer{
+    text-align: center;
+  }
+
 }
 
 /* -- For Tablet View --  */
-@media screen and (min-width: 768px) and (max-width: 1023px){
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  nav {
+    height: auto;
+  }
+  nav>div {
+    height: 100%;
+    padding: 10px;
+  }
+  nav>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .navitems {
+    flex: auto;
+    font-size: 2rem;
+  }
+  #search {
+    width: 50% !important;
+    align-self: center !important;
+  }
+  #Home {
+    flex-direction: column;
+  }
 
+  .main-result {
+    width: 100% !important;
+    display: flex;
+    flex-direction: row !important;
+  }
+
+  #details {
+   height: 80vh;
+}
+.daily-container {
+  height: 80vh;
+  gap: 10px !important;
+}
+
+  .side_section {
+    width: 100% !important;
+  }
+
+  #other_section_container {
+    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-rows: repeat(6, 190px) !important;
+    grid-template-areas: "Humid visibility air air"
+      "pressure Hourly Hourly Hourly"
+      "sunrise sunrise today today"
+      "snowing uv map map"
+      "wind wind map map"
+      "rain city map map" !important;
+  }
+
+  .footer{
+    text-align: center;
+  }
+
+}
+
+/* -- For  View --  */
+@media screen and (min-width: 1025px) and (max-width: 1350px) {
+  .main-result {
+    width: 50% !important;
+  }
+
+  .side_section {
+    width: 100% !important;
+  }
+
+  #other_section_container {
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-rows: repeat(7, 190px) !important;
+    grid-template-areas: "Humid Hourly Hourly"
+      "air air visibility"
+      "rain map map"
+      "snowing  map map"
+      "sunrise sunrise pressure"
+      "uv wind wind"
+      "today today city" !important;
+  }
 }

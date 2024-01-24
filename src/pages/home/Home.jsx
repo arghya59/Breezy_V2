@@ -202,7 +202,7 @@ export default function Home() {
                   />
 
                   {/* UV Index */}
-                  <div id='pressure_container' className='other_section_card'>
+                  <div id='uvi' className='other_section_card'>
                     <div className='-card-'>
                       <div className='card_title'>
                         <TbUvIndex className='m icon_property' /> UV Index

@@ -3,9 +3,10 @@ A minimalistic weather forecast app made in React.
 
 Access it here. You can search by typing any location to get daily forecast & location map
 
+Live : https://breezy-arghya.vercel.app/
 
 
-How I built a weather forecast app with location map in React & Leaflet!
+<!-- How I built a weather forecast app with location map in React & Leaflet!
 
 Being a fledgling web developer, I wanted to grasp the concepts of React. Following tutorials is important, but than I thought why not make something you like . So I decided to make a weather forecast app in React (sigh another one). You've got to start somewhere, right.
 
@@ -30,7 +31,6 @@ To be honest, there are many improvements due:
 
 Refactor the code to separate presentation from the API specific parts
 Optimize the leaflet plugin code to improve response time
-Enhance Search bar & UI look & feel.
 Conclusion
 It was a great experience to build something from the ground up. Taking the first step and pushing through to complete it is a satisfying feeling.
 Please comment & hit me up if you have anything to talk about :)
@@ -39,7 +39,7 @@ You can check the project and leave any bugs/feature requests in here.
 
 
 
-
+ -->
 
 # Getting Started with Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -65,6 +65,7 @@ export default function Home() {
       sunset: getDateAndTime(weather.data.weather.current.sunset, weather.data.weather.timezone_offset),
       status: weather.data.weather.current.weather[0].main,
       rain: weather.data.weather.daily[0].rain,
+      snow: weather.data.weather.daily[0].snow,
       pop: weather.data.weather.daily[0].pop,
       timezone_offset: weather.data.weather.timezone_offset,
       uvi: Math.round(weather.data.weather.current.uvi),
@@ -188,8 +189,8 @@ export default function Home() {
                         <div className='m icon_property' />Snow
                       </div>
                       <div className='snow_data'>
-                        <p className='smallcard_data_text'>22 <span className='unit'>mm</span></p>
-                        <p>Due point is right now</p>
+                        <p className='smallcard_data_text'>{ data.snow ? data.snow : 0 } <span className='unit'>mm</span></p>
+                        <p>{ data.snow ? "" : "No sign of snowing" }</p>
                       </div>
 
                     </div>
